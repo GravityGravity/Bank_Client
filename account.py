@@ -28,3 +28,12 @@ class Account:
 
     def print_balance(self):
         return f"Account {self.account_number} balance: ${self.__balance}"
+
+    def print_transactions(self, account_number):
+        if account_number != self.account_number:
+            return "Invalid account number"
+        if not self.transactions:
+            return "No transactions found"
+        
+        transaction_history = [f"Transaction ID: {t.transaction_id}, Type: {t.transaction_type}, Amount: {t.amount}, Balance After Transaction: {t.balance_after_transaction}, Time: {t.time}" for t in self.transactions]
+        return "\n".join(transaction_history)
