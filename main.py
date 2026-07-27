@@ -9,7 +9,7 @@ class Client:
         self.f_name = f_name
         self.l_name = l_name
         self.user_id = user_id #Unique user ID for each client
-        self.accounts = []
+        self.accounts = [] # Review: Most likely will need to change this to a key-value pair to store account numbers and their corresponding balances
 
     def get_info(self):
         return f"Client Name: {self.f_name} {self.l_name}, User ID: {self.user_id}"
