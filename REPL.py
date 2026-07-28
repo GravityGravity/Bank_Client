@@ -42,7 +42,7 @@ def REPL():
             if client == None:
                 client_initiation()
 
-            user_input = input(f"{client.f_name}% ")
+            user_input = input(f"{client.f_name}-{client.user_id}% ")
 
             # Shlex Parses user input into {commands} {args...}
             if user_input:
@@ -111,6 +111,8 @@ def REPL_login(args):  # REPL command LOGIN to login in as an existing client
 def REPL_create(args) -> int:  # REPL command CREATE to create a new client account
     #! Most likely will need to add more error checks
 
+    print(*args)
+
     if len(args) != 3:
         print(
             r"~! CREATE commands arguments error.  Type 'Help' for command structure~")
@@ -119,6 +121,7 @@ def REPL_create(args) -> int:  # REPL command CREATE to create a new client acco
     # Creates new client object
     try:
         args[2] = int(args[2])
+        global client
         client = Client(*args)
         return 1
     except Exception as e:
