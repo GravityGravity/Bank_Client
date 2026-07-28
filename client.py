@@ -2,11 +2,12 @@
 
 from account import Account
 
+
 class Client:
-    def __init__(self, f_name, l_name, user_id):
+    def __init__(self, f_name, l_name, user_id: int):
         self.f_name = f_name
         self.l_name = l_name
-        self.user_id = user_id #Unique user ID for each client
+        self.user_id = user_id  # Unique user ID for each client
         self.accounts: dict[int, Account] = {}
 
     def get_info(self):
@@ -17,8 +18,9 @@ class Client:
             return f"Account number {account_number} already exists"
         new_account = Account(account_number)
         self.accounts[account_number] = new_account
-        return f"Account {account_number} created" 
+        return f"Account {account_number} created"
 
     def print_accounts(self):
-        account_info = [account.print_balance() for account in self.accounts.values()]
+        account_info = [account.print_balance()
+                        for account in self.accounts.values()]
         return "\n".join(account_info)
