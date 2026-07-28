@@ -21,6 +21,9 @@ class Client:
         return f"Account {account_number} created"
 
     def print_accounts(self):
-        account_info = [account.print_balance()
-                        for account in self.accounts.values()]
-        return "\n".join(account_info)
+        if self.accounts:
+            account_info = [account.print_balance()
+                            for account in self.accounts.values()]
+            return "\n".join(account_info)
+        else:
+            return "    ~0 ACTIVE ACCOUNTS~    "

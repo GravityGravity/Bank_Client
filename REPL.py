@@ -55,6 +55,10 @@ def REPL():
                         break
                     case "help":
                         show_help()
+                    case "info":
+                        REPL_info()
+                    case "accounts" | "list" | "ls" | "balances" | "balance":
+                        REPL_accounts()
                     case _:
                         # Process the user input here
                         print(f"Entered: '{user_input}'")
@@ -129,7 +133,7 @@ def REPL_create(args) -> int:  # REPL command CREATE to create a new client acco
         return 0
 
 
-def show_help():
+def show_help():  # Print all commands that REPL can handle
     print("""
     Commands
     --------
@@ -149,6 +153,16 @@ def show_help():
     HELP
     EXIT
     """)
+
+
+def REPL_info():  # REPL command INFO to print client information
+    global client
+    print(client.get_info())
+
+
+def REPL_accounts():  # REPL command ACCOUNTS/LIST/LS to print client account numbers + balanace
+    global client
+    print(client.print_accounts())
 
 
 REPL()  # Program Initlization
